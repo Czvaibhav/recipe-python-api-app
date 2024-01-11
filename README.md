@@ -1,1 +1,2 @@
-# recipe-python-api-app
+# Recipe-python-api
+Recipe Project API
