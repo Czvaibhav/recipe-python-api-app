@@ -12,3 +12,25 @@ services:
       - ./app:/app
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db                    #host name be connected
+      - DB_NAME=devdb
+      - DB_USER=devuser
+      - DB_PASS=changeme              #must match with the db ENV.
+    depends_on:
+      - db                            #app service depends on DB service.
+
+  db:                                 #make sure it must be level with APP
+    image: postgres:13-alpine         #find{/dockerhub/postgres(public)/13-alpine(tag)}
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=devdb              #to set the initial db Config
+      - POSTGRES_USER=devuser
+      - POSTGRES_PASSWORD=changeme     #localdev DBs
+      
+volumes:                              #volume must be intended with the Start of file
+  dev-db-data:
+                                      #nothing to add ,further will be handled by the docker-compose
+
+#check it by "docker-compose up" to Terminal 

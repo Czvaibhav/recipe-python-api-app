@@ -1,0 +1,13 @@
+29. Write a test using TDD:
+30. Mocking:
+	-What is mocking?:
+		-Override or change the behaviour of testing
+		-Avoid unintended side effects
+		-Isolate code being tested
+	-Why use mocking?
+		-Avoid relying on external services
+			-Can't guranttee they will be available
+			-Makes test upredictable and inconsistent
+		-Avoid unintended consequencies
+			-Accidentally sending emails
+			-Overloading external services 

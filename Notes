@@ -1,0 +1,18 @@
+Django Needs to know:
+	-Engine(type of database)
+	-Hostname(IP or domain name of database)
+	-Port
+	-Database Name
+	-Username
+	-Password
+
+Environment Value 
+	-Pull config values of environment values
+	-Easily passed to the Docker 
+	-used in local dev or prod
+	-single place to config your project
+	-Easy to do with python
+
+Psycopg2(Package that you need in order to connect to our database)
+	-Its most used PostGreSQL adaptor for python
+	-Supported by django
