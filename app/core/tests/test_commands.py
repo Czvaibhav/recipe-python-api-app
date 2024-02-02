@@ -1,12 +1,9 @@
-
 from unittest.mock import patch  # to mock behaviour
 
-from psycopg2 import OperationalError as Psycopg2Error  #
-
-
 # to call the command we are testing
-from django.core.management import call_command
+from psycopg2 import OperationalError as Psycopg2Error
 # another error may while connecting db
+from django.core.management import call_command
 from django.db.utils import OperationalError
 from django.test import SimpleTestCase  # for creating our unittest
 
@@ -31,5 +28,5 @@ class CommandTests(SimpleTestCase):
 
         call_command('wait_for_db')
 
-        #self.assertEqual(patched_check.call_command, 6)   # noqa
+        # self.assertEqual(patched_check.call_command, 6)   # noqa
         patched_check.assert_called_with(databases=['default'])
