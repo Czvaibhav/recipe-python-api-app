@@ -11,7 +11,7 @@ services:
     volumes:
       - ./app:/app
     command: >
-      sh -c "python manage.py wait_for_db --max-line-length=100 &&
+      sh -c "python manage.py wait_for_db &&
              python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
     environment:
@@ -30,9 +30,9 @@ services:
       - POSTGRES_DB=devdb              #to set the initial db Config
       - POSTGRES_USER=devuser
       - POSTGRES_PASSWORD=changeme     #localdev DBs
-      
+
 volumes:                              #volume must be intended with the Start of file
   dev-db-data:
                                       #nothing to add ,further will be handled by the docker-compose
 
-#check it by "docker-compose up" to Terminal 
+#check it by "docker-compose up" to Terminal
