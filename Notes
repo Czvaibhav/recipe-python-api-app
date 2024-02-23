@@ -25,3 +25,44 @@ Django ORM:
 		-serves as a abstration layer for the data and the Database
 		-Django handles database structure and changes
 
+
+----------------------------------------------------------------
+Section 9:Create user Model
+
+Tha Django user model:
+
+	-Django authentication:
+		Built in authentication system
+		Framework for basic features
+		Registration
+			-Login
+			-Auth
+		Integrates with Django admin
+
+	-Django User model:
+		-Foundation of the Django auth system
+		-Default user model
+			-Username instead of email
+			-Not easy to customise
+		-Create a custom model for new projects
+			-Allows for using email instead of username
+			-Future proof project for later changes to user model
+
+	-How to customise User model:
+		-Create model
+			-Base from AbstractBaseUser and PermissionsMixin
+		-Create custom manager
+			-Used for CLI integration
+		-Set AUTH USER MODEL in settings.py.
+		-Create and run migrations
+
+	-AbstractBase User class:
+		-Provides Feature for Authentication
+		-Doesn't include Fields
+	-PerimisionMixin Base class:
+		-Support for Django permission system
+		-Includes fields and methods
+
+	-Common Issues:
+		-Running migrations before setting custom model
+		-Typose in Config

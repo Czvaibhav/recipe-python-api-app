@@ -10,29 +10,34 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app
+      - dev-static-data:/vol/web
     command: >
       sh -c "python manage.py wait_for_db &&
              python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
     environment:
-      - DB_HOST=db                    #host name be connected
+      - DB_HOST=db #host name be connected
       - DB_NAME=devdb
       - DB_USER=devuser
-      - DB_PASS=changeme              #must match with the db ENV.
+      - DB_PASS=changeme #must match with the db ENV.
+      - DEBUG=1
     depends_on:
-      - db                            #app service depends on DB service.
+      - db #app service depends on DB service.
 
-  db:                                 #make sure it must be level with APP
-    image: postgres:13-alpine         #find{/dockerhub/postgres(public)/13-alpine(tag)}
+  db:
+    #make sure it must be level with APP
+    image: postgres:13-alpine #find{/dockerhub/postgres(public)/13-alpine(tag)}
     volumes:
       - dev-db-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=devdb              #to set the initial db Config
+      - POSTGRES_DB=devdb #to set the initial db Config
       - POSTGRES_USER=devuser
-      - POSTGRES_PASSWORD=changeme     #localdev DBs
+      - POSTGRES_PASSWORD=changeme #localdev DBs
 
-volumes:                              #volume must be intended with the Start of file
+volumes:
+  #volume must be intended with the Start of file
   dev-db-data:
-                                      #nothing to add ,further will be handled by the docker-compose
+  dev-static-data:
+    #nothing to add ,further will be handled by the docker-compose
 
-#check it by "docker-compose up" to Terminal
+    #check it by "docker-compose up" to Terminal
